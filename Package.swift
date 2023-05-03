@@ -6,18 +6,24 @@ import PackageDescription
 enum Config: String {
     case Gymlog
     case AppFeature
+    case Goal
     
     var name: String { rawValue }
     var tests: String { "\(name)Tests" }
-    var target: PackageDescription.Target {
+    var target: Target {
         .target(name: name, dependencies: dependencies)
     }
-    var package: PackageDescription.Package { .init(name: name) }
-    var dependencies: [PackageDescription.Target.Dependency] {
+    var product: Product {
+        .library(name: name, targets: [target.name])
+    }
+    var package: Package { .init(name: name) }
+    var dependencies: [Target.Dependency] {
         switch self {
         case .Gymlog:
             return []
         case .AppFeature:
+            return []
+        case .Goal:
             return []
         }
     }
@@ -25,19 +31,19 @@ enum Config: String {
 
 var gymlog = Config.Gymlog
 var appFeature = Config.AppFeature
+var goal = Config.Goal
 
 
 let package = Package(
     name: gymlog.name,
     platforms: [.iOS(.v16)],
     products: [
-        .library(
-            name: appFeature.name,
-            targets: [appFeature.target.name]
-        ),
+        appFeature.product,
+        goal.product
     ],
     targets: [
-        .target(name: appFeature.target.name),
+        appFeature.target,
+        goal.target,
         .testTarget(
             name: gymlog.tests,
             dependencies: appFeature.target.dependencies
