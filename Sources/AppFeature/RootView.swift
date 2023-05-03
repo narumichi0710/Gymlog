@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import ColorScheme
 
 public struct RootView: View {
-    @AppStorage(wrappedValue: 0, "appearanceMode") var appearanceMode
-    
+    @AppStorage(wrappedValue: ColorSchemeType.followSystem, "appearanceMode") var appearanceMode
+
     public init() {}
     public var body: some View {
         NavigationStack {
@@ -22,31 +23,16 @@ public struct RootView: View {
                 NavigationLink("タイマー機能", destination: Text("TODO:"))
                 NavigationLink("ユーザー情報設定機能", destination: Text("TODO:"))
                 NavigationLink("プッシュ通知機能", destination: Text("TODO:"))
-                NavigationLink("ダークモード設定機能", destination: ColorSchemeSettingView())
+                NavigationLink("ダークモード設定機能", destination: ColorSchemeRootView())
             }
             .navigationTitle("Gymlog")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .applyAppearenceSetting(DarkModeSetting(rawValue: self.appearanceMode) ?? .followSystem)
+        .preferredColorScheme(appearanceMode.type)
     }
 }
 
-extension View {
-    @ViewBuilder
-    func applyAppearenceSetting(_ setting: DarkModeSetting) -> some View {
-        switch setting {
-        case .followSystem:
-            self
-                .preferredColorScheme(.none)
-        case .darkMode:
-            self
-                .preferredColorScheme(.dark)
-        case .lightMode:
-            self
-                .preferredColorScheme(.light)
-        }
-    }
-}
+
 
 
 public struct ContentView_Previews: PreviewProvider {

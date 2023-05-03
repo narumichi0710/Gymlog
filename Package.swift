@@ -7,6 +7,7 @@ enum Config: String {
     case Gymlog
     case AppFeature
     case Goal
+    case ColorScheme
     
     var name: String { rawValue }
     var tests: String { "\(name)Tests" }
@@ -22,8 +23,10 @@ enum Config: String {
         case .Gymlog:
             return []
         case .AppFeature:
-            return []
+            return ["ColorScheme"]
         case .Goal:
+            return []
+        default:
             return []
         }
     }
@@ -32,6 +35,7 @@ enum Config: String {
 var gymlog = Config.Gymlog
 var appFeature = Config.AppFeature
 var goal = Config.Goal
+var colorScheme = Config.ColorScheme
 
 
 let package = Package(
@@ -39,11 +43,13 @@ let package = Package(
     platforms: [.iOS(.v16)],
     products: [
         appFeature.product,
-        goal.product
+        goal.product,
+        colorScheme.product
     ],
     targets: [
         appFeature.target,
         goal.target,
+        colorScheme.target,
         .testTarget(
             name: gymlog.tests,
             dependencies: appFeature.target.dependencies
