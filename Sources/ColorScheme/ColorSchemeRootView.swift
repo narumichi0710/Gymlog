@@ -24,6 +24,9 @@ public struct ColorSchemeRootView: View {
             }
             Spacer()
         }
+        .navigationTitle("Color Scheme Setting")
+        .navigationBarTitleDisplayMode(.inline)
+
     }
 }
 
