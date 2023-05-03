@@ -10,6 +10,7 @@ import ColorScheme
 import User
 import Record
 import Goal
+import Body
 
 public struct RootView: View {
     @AppStorage(wrappedValue: ColorSchemeType.followSystem, "appearanceMode") var appearanceMode
@@ -21,7 +22,7 @@ public struct RootView: View {
                 NavigationLink("ユーザー情報登録機能", destination: UserInputView())
                 NavigationLink("目標設定機能", destination: GoalInputView())
                 NavigationLink("種目別記録一覧機能", destination: RecordRootView())
-                NavigationLink("体重/体脂肪率記録機能", destination: Text("TODO:"))
+                NavigationLink("体重/体脂肪率記録機能", destination: BodyInputView())
                 NavigationLink("トレーニングプラン機能", destination: Text("TODO:"))
                 NavigationLink("SNS機能(message,follow,tag)", destination: Text("TODO:"))
                 NavigationLink("タイマー機能", destination: Text("TODO:"))
