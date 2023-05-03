@@ -7,6 +7,7 @@ enum Config: String {
     case Gymlog
     case AppFeature
     case User
+    case Record
     case Goal
     case ColorScheme
     
@@ -24,7 +25,7 @@ enum Config: String {
         case .Gymlog:
             return []
         case .AppFeature:
-            return ["ColorScheme", "User", "Goal"]
+            return ["ColorScheme", "User", "Record", "Goal"]
         case .Goal:
             return ["User"]
         default:
@@ -38,6 +39,7 @@ var appFeature = Config.AppFeature
 var goal = Config.Goal
 var colorScheme = Config.ColorScheme
 var user = Config.User
+var record = Config.Record
 
 let package = Package(
     name: gymlog.name,
@@ -45,12 +47,14 @@ let package = Package(
     products: [
         appFeature.product,
         user.product,
+        record.product,
         goal.product,
         colorScheme.product
     ],
     targets: [
         appFeature.target,
         user.target,
+        record.target,
         goal.target,
         colorScheme.target,
         .testTarget(
