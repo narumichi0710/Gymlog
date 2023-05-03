@@ -1,17 +1,18 @@
 //
-//  AppApp.swift
+//  MainApp.swift
 //  App
 //
 //  Created by Narumichi Kubo on 2023/05/03.
 //
 
 import SwiftUI
+import AppFeature
 
 @main
-struct AppApp: App {
+struct MainApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
