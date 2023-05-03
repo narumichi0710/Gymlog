@@ -3,21 +3,34 @@
 
 import PackageDescription
 
+enum Config: String {
+    case Gymlog
+    case AppFeature
+    
+    var name: String { rawValue }
+    var tests: String { "\(name)Tests" }
+    var target: PackageDescription.Target { .target(name: name) }
+    var package: PackageDescription.Package { .init(name: name) }
+    
+    
+}
+
+var gymlog = Config.Gymlog
+var appFeature = Config.AppFeature
+
 let package = Package(
-    name: "Gymlog",
+    name: gymlog.name,
+    platforms: [.iOS(.v16)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Gymlog",
-            targets: ["Gymlog"]),
+            name: appFeature.name,
+            targets: [appFeature.target.name]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "Gymlog"),
+        .target(name: appFeature.target.name),
         .testTarget(
-            name: "GymlogTests",
-            dependencies: ["Gymlog"]),
+            name: gymlog.tests,
+            dependencies: appFeature.target.dependencies
+        ),
     ]
 )
