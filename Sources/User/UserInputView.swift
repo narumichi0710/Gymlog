@@ -26,31 +26,32 @@ public struct UserInputView: View {
     public var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("Name")) {
-                    TextField("Enter your name", text: $name)
+                Section(header: Text("ニックネーム")) {
+                    TextField("", text: $name)
                 }
-                Section(header: Text("Email")) {
-                    TextField("Enter your email", text: $email)
+                Section(header: Text("メールアドレス")) {
+                    TextField("", text: $email)
                         .keyboardType(.emailAddress)
                 }
-                Section(header: Text("Password")) {
-                    SecureField("Enter your password", text: $password)
+                Section(header: Text("パスワード")) {
+                    SecureField("", text: $password)
                 }
-                Section(header: Text("Birthday")) {
-                    DatePicker("Enter your birthday", selection: $birthday, displayedComponents: .date)
+                Section(header: Text("誕生日")) {
+                    DatePicker("", selection: $birthday, displayedComponents: .date)
                 }
-                Section(header: Text("Gender")) {
-                    Picker("Select your gender", selection: $gender) {
-                        Text("Male").tag(Gender.male)
-                        Text("Female").tag(Gender.female)
-                        Text("Other").tag(Gender.other)
+                Section(header: Text("性別")) {
+                    Picker("", selection: $gender) {
+                        ForEach(Gender.allCases, id: \.rawValue) { type in
+                            Text(type.localize)
+                                .tag(type)
+                        }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
             }
             .navigationBarTitle("User Info")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button("Save", action: {
+            .navigationBarItems(trailing: Button("保存", action: {
                 let user = UserEntity(id: 0, name: name, email: email, password: password, birthday: birthday, gender: gender)
                 dismiss()
             }))
