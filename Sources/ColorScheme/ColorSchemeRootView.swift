@@ -15,12 +15,10 @@ public struct ColorSchemeRootView: View {
     public var body: some View {
         VStack {
             Picker("Appearance setting", selection: $appearanceMode) {
-                Text("Follow system")
-                    .tag(ColorSchemeType.followSystem)
-                Text("Light mode")
-                    .tag(ColorSchemeType.light)
-                Text("Dark mode")
-                    .tag(ColorSchemeType.dark)
+                ForEach(ColorSchemeType.allCases, id: \.rawValue) { type in
+                    Text(type.localize)
+                        .tag(type)
+                }
             }
             Spacer()
         }

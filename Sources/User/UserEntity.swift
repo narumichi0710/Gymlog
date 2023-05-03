@@ -34,8 +34,19 @@ public struct UserEntity: Codable {
     )
 }
 
-public enum Gender: Int, Codable {
+public enum Gender: Int, Codable, CaseIterable {
     case male
     case female
     case other
+    
+    public var localize: String {
+        switch self {
+        case .male:
+            return "男性"
+        case .female:
+            return "女性"
+        case .other:
+            return "その他"
+        }
+    }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum ColorSchemeType: Int {
+public enum ColorSchemeType: Int, CaseIterable {
     case followSystem
     case light
     case dark
@@ -20,6 +20,17 @@ public enum ColorSchemeType: Int {
             return .light
         case .dark:
             return .dark
+        }
+    }
+    
+    public var localize: String {
+        switch self {
+        case .followSystem:
+            return "Follow system"
+        case .light:
+            return "Light mode"
+        case .dark:
+            return "Dark mode"
         }
     }
 }

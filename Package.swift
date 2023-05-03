@@ -24,9 +24,9 @@ enum Config: String {
         case .Gymlog:
             return []
         case .AppFeature:
-            return ["ColorScheme", "User"]
+            return ["ColorScheme", "User", "Goal"]
         case .Goal:
-            return []
+            return ["User"]
         default:
             return []
         }
