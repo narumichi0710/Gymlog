@@ -9,14 +9,23 @@ enum Config: String {
     
     var name: String { rawValue }
     var tests: String { "\(name)Tests" }
-    var target: PackageDescription.Target { .target(name: name) }
+    var target: PackageDescription.Target {
+        .target(name: name, dependencies: dependencies)
+    }
     var package: PackageDescription.Package { .init(name: name) }
-    
-    
+    var dependencies: [PackageDescription.Target.Dependency] {
+        switch self {
+        case .Gymlog:
+            return []
+        case .AppFeature:
+            return []
+        }
+    }
 }
 
 var gymlog = Config.Gymlog
 var appFeature = Config.AppFeature
+
 
 let package = Package(
     name: gymlog.name,
@@ -24,7 +33,8 @@ let package = Package(
     products: [
         .library(
             name: appFeature.name,
-            targets: [appFeature.target.name]),
+            targets: [appFeature.target.name]
+        ),
     ],
     targets: [
         .target(name: appFeature.target.name),
