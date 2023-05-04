@@ -11,15 +11,17 @@ import User
 import Record
 import Goal
 import Body
+import Auth
 
 public struct RootView: View {
     @AppStorage(wrappedValue: ColorSchemeType.followSystem, "appearanceMode") var appearanceMode
+    @StateObject var appData = AppData()
 
     public init() {}
     public var body: some View {
         NavigationStack {
             List {
-                NavigationLink("ユーザー情報登録機能", destination: UserInputView())
+                NavigationLink("ユーザー情報登録機能", destination: LoginRootView(user: $appData.user))
                 NavigationLink("目標設定機能", destination: GoalInputView())
                 NavigationLink("種目別記録一覧機能", destination: RecordRootView())
                 NavigationLink("体重/体脂肪率記録機能", destination: BodyInputView())
