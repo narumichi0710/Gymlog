@@ -11,6 +11,7 @@ enum Config: String {
     case Body
     case Record
     case Goal
+    case Tutorial
     case ColorScheme
     
     var name: String { rawValue }
@@ -27,11 +28,11 @@ enum Config: String {
         case .Gymlog:
             return []
         case .AppFeature:
-            return ["ColorScheme", "User", "Record", "Goal", "Body", "Auth"]
+            return ["ColorScheme", "User", "Record", "Goal", "Body", "Auth", "Tutorial"]
         case .Goal:
             return ["User"]
         case .Auth:
-            return ["User"]
+            return ["User", "Tutorial"]
         default:
             return []
         }
@@ -46,6 +47,7 @@ var user = Config.User
 var record = Config.Record
 var body = Config.Body
 var auth = Config.Auth
+var tutorial = Config.Tutorial
 
 let package = Package(
     name: gymlog.name,
@@ -57,6 +59,7 @@ let package = Package(
         record.product,
         goal.product,
         body.product,
+        tutorial.product,
         colorScheme.product
     ],
     targets: [
@@ -66,6 +69,7 @@ let package = Package(
         record.target,
         goal.target,
         body.target,
+        tutorial.target,
         colorScheme.target,
         .testTarget(
             name: gymlog.tests,
