@@ -28,11 +28,22 @@ enum Config: String {
         case .Gymlog:
             return []
         case .AppFeature:
-            return ["ColorScheme", "User", "Record", "Goal", "Body", "Auth", "Tutorial"]
+            return [
+                "ColorScheme",
+                "User",
+                "Record",
+                "Goal", "Body",
+                "Auth", "Tutorial",
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+            ]
         case .Goal:
             return ["User"]
         case .Auth:
-            return ["User", "Tutorial"]
+            return [
+                "User",
+                "Tutorial",
+            ]
         default:
             return []
         }
@@ -61,6 +72,9 @@ let package = Package(
         body.product,
         tutorial.product,
         colorScheme.product
+    ],
+    dependencies: [
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", exact: .init(10, 9, 0)),
     ],
     targets: [
         appFeature.target,

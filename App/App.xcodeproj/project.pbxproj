@@ -11,6 +11,7 @@
 		52B8340D2A02110B00DFF7E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B8340C2A02110B00DFF7E2 /* Assets.xcassets */; };
 		52B834102A02110B00DFF7E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B8340F2A02110B00DFF7E2 /* Preview Assets.xcassets */; };
 		52B8341B2A02271600DFF7E2 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 52B8341A2A02271600DFF7E2 /* AppFeature */; };
+		52B834232A04F26300DFF7E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B834222A04F26300DFF7E2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		52B8340C2A02110B00DFF7E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52B8340F2A02110B00DFF7E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		52B834162A02115B00DFF7E2 /* Gymlog */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Gymlog; path = ..; sourceTree = "<group>"; };
+		52B834222A04F26300DFF7E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		52B834072A02110900DFF7E2 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				52B834222A04F26300DFF7E2 /* GoogleService-Info.plist */,
 				52B834082A02110900DFF7E2 /* MainApp.swift */,
 				52B8340C2A02110B00DFF7E2 /* Assets.xcassets */,
 				52B8340E2A02110B00DFF7E2 /* Preview Content */,
@@ -139,6 +142,7 @@
 			files = (
 				52B834102A02110B00DFF7E2 /* Preview Assets.xcassets in Resources */,
 				52B8340D2A02110B00DFF7E2 /* Assets.xcassets in Resources */,
+				52B834232A04F26300DFF7E2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
