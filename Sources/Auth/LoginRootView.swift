@@ -13,6 +13,7 @@ public struct LoginRootView: View {
     @State var isPresentedLogin = false
     @State var isPresentedLogout = false
     @Binding var user: UserEntity?
+    @State var isLogin: Bool = false
     
     public init(isPresentedLogin: Bool = false, user: Binding<UserEntity?>) {
         self._user = user
@@ -44,7 +45,7 @@ public struct LoginRootView: View {
             .padding(.top, 50)
             
             Button(action: {
-                isPresentedLogin.toggle()
+                login()
             }) {
                 Text("ログイン")
                     .foregroundColor(.white)
@@ -72,4 +73,9 @@ public struct LoginRootView: View {
             }
         }
     }
+    
+    private func login() {
+        isLogin = true
+    }
+    
 }
