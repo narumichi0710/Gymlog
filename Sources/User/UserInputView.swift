@@ -21,8 +21,8 @@ public struct UserInputView: View {
     ) {
         self.onFinish = onFinish
         self._name = .init(initialValue: user.name)
-        self._email = .init(initialValue: user.email)
-        self._password = .init(initialValue: user.password)
+        self._email = .init(initialValue: user.email ?? "")
+        self._password = .init(initialValue: user.password ?? "")
         self._birthday = .init(initialValue: user.birthday)
         self._gender = .init(initialValue: user.gender)
     }
@@ -59,10 +59,12 @@ public struct UserInputView: View {
                 let user = UserEntity(
                     id: 0,
                     name: name,
-                    email: email,
-                    password: password,
+                    gender: gender,
                     birthday: birthday,
-                    gender: gender
+                    height: 170,
+                    weight: 170,
+                    email: email,
+                    password: password
                 )
                 onFinish(user)
             }))

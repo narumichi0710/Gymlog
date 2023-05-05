@@ -21,10 +21,21 @@ public struct LoginRootView: View {
     
     public var body: some View {
         VStack {
+            NavigationLink {
+                RegisterRootView()
+            } label: {
+                Text("ユーザー情報初回登録")
+                    .foregroundColor(.white)
+                    .frame(width: 200, height: 50)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .padding(.top, 50)
+            }
+            
             Button(action: {
                 isPresentedInput.toggle()
             }) {
-                Text("ユーザー情報入力")
+                Text("ユーザー情報編集")
                     .foregroundColor(.white)
                     .frame(width: 200, height: 50)
                     .background(Color.blue)
